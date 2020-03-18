@@ -88,7 +88,7 @@
             <h1>closure</h1>
             <span class="meta">
             	Posted on
-              2020-03-18，2 min read
+              2020-03-17，2 min read
             </span>
           </div>
         </div>
@@ -110,6 +110,17 @@ closures are function that have access to outer(enclosing)function's variables-s
 <li>Data privacy/ emulating private methods with closuers. commonly used in the module pattern</li>
 <li>Partial applications or currying</li>
 </ul>
+<h2 id="in-for-loop">###in for loop</h2>
+<p><code>for(var i=0;i&lt;10;i++){ setTimeout(function(){ console.log(i)//10个10 },1000) }</code><br>
+use closure   or   let<br>
+`<br>
+for(var i=0;i&lt;10;i++){<br>
+((j)=&gt;{<br>
+setTimeout(function(){<br>
+console.log(j)//1-10<br>
+},1000)})(i)</p>
+<p>}<br>
+`</p>
 <h2 id="implement-in-debounce-function">###implement in debounce function</h2>
 <p><code>window.onresize = function(){ console.log('onresize')// trigger it only once }</code></p>
 <p>without clouser<br>
@@ -153,14 +164,6 @@ var fn = function(){</p>
 <p>`</p>
 
           
-          <p class="next-post">下一篇：
-            <a href="https://hongxuli.github.io/post/event-delegation/">
-              <span class="post-title">
-                event delegation&rarr;
-              </span>
-            </a>
-          </p>
-        
         <div class="comment">
           
         </div>
