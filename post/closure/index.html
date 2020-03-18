@@ -101,7 +101,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h2 id="what-is-closure">###what is closure</h2>
+          <h2 id="what-is-closure">##what is closure</h2>
 <p>A closure is the <em>combination</em> of <strong>a function</strong> and the <strong>lexical environment</strong> whithin which that function was declard.<br>
 lexical refer the variables are declared within the lexical scoping.<br>
 closures are function that have access to outer(enclosing)function's variables-scope chain even after the outer function has returned.</p>
@@ -111,16 +111,14 @@ closures are function that have access to outer(enclosing)function's variables-s
 <li>Partial applications or currying</li>
 </ul>
 <h2 id="in-for-loop">###in for loop</h2>
-<p><code>for(var i=0;i&lt;10;i++){ setTimeout(function(){ console.log(i)//10个10 },1000) }</code><br>
-use closure   or   let<br>
-`<br>
-for(var i=0;i&lt;10;i++){<br>
+<p><code>for(var i=0;i&lt;10;i++){ setTimeout(function(){ console.log(i)//10个10 },1000) }</code></p>
+<p>use closure   or   let<br>
+`for(var i=0;i&lt;10;i++){<br>
 ((j)=&gt;{<br>
 setTimeout(function(){<br>
 console.log(j)//1-10<br>
 },1000)})(i)</p>
-<p>}<br>
-`</p>
+<p>}`</p>
 <h2 id="implement-in-debounce-function">###implement in debounce function</h2>
 <p><code>window.onresize = function(){ console.log('onresize')// trigger it only once }</code></p>
 <p>without clouser<br>
