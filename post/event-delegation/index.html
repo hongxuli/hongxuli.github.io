@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-       <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta content="yes" name="apple-mobile-web-app-capable" />
   <meta content="black" name="apple-mobile-web-app-status-bar-style" />
@@ -9,14 +9,14 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="kveln">
-  <title>Blog | Hongxu Li</title>
+  <title>event delegation | Hongxu Li</title>
   <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="https://hongxuli.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
   <!--  <link href="https://hongxuli.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="Blog | Hongxu Li » Feed" href="https://hongxuli.github.io/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="event delegation | Hongxu Li » Feed" href="https://hongxuli.github.io/atom.xml">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
   <link href="https://hongxuli.github.io/styles/main.css" rel="stylesheet">
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
@@ -25,6 +25,11 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
+    <meta property="og:description" content="event delegation"/>
+    <meta property="og:url" content="https://hongxuli.github.io/post/event-delegation/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Hongxu Li"/>
   </head>
   <body>
   	<!-- Navigation -->
@@ -73,57 +78,50 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1 class="tag-tl">Blogs</h1>
+          	<span class="tags">
+          	 
+            <a href="https://hongxuli.github.io/tag/1s0Ut9-H2/" class="tag">interview</a>
+            
+            <a href="https://hongxuli.github.io/tag/5TzntEKsA/" class="tag">Js</a>
+            
+        </span>
+            <h1>event delegation</h1>
+            <span class="meta">
+            	Posted on
+              2020-03-18，1 min read
+            </span>
           </div>
         </div>
       </div>
     </div>
   </header>
+
   <!-- Post Content -->
   <article>
     <div class="container">
       <div class="row">
-        
-      
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-archives">
-    <h2 class="year">2020</h2>
-    
-                
-        <a href="https://hongxuli.github.io/post/closure/" class="post">
-          <h2 class="post-title Archives">
-            closure
-          </h2>
-          <div class="time post-meta">2020-03-18</div>
-        </a>
-  
-                    
-                
-        <a href="https://hongxuli.github.io/post/event-delegation/" class="post">
-          <h2 class="post-title Archives">
-            event delegation
-          </h2>
-          <div class="time post-meta">2020-03-18</div>
-        </a>
-  
-                    
-                
-        <a href="https://hongxuli.github.io/post/amd-vs-commonjs/" class="post">
-          <h2 class="post-title Archives">
-            Amd vs commonJs
-          </h2>
-          <div class="time post-meta">2020-03-18</div>
-        </a>
-  
-                    
-        </div>
-        </div>
+          <p>Event delegation is a technique involving adding event listener to a parent element instead of descendant elements</p>
+<p>Due to the bubbling in DOM, the listener will fire whenever the event is triggerd on the descendant elements.</p>
+<p>benefits:<br>
+- save memory, because there is only one listener in the parent element. you    don't need to add event listener for each descendants elements<br>
+- you dont need to unbind/bind the listener form the descendant elements which need to be deleted/added</p>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://hongxuli.github.io/post/amd-vs-commonjs/">
+              <span class="post-title">
+                Amd vs commonJs&rarr;
+              </span>
+            </a>
+          </p>
         
+        <div class="comment">
+          
+        </div>
       </div>
     </div>
   </article>
-
-
  <!-- Footer -->
   <footer>
     <div class="container">
@@ -204,3 +202,4 @@
   })(this));</script>
   </body>
 </html>
+
