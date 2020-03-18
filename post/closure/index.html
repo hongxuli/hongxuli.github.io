@@ -101,26 +101,73 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h2 id="what-is-closure">##what is closure</h2>
-<p>A closure is the <em>combination</em> of <strong>a function</strong> and the <strong>lexical environment</strong> whithin which that function was declard.<br>
+          <h2 id="what-is-closure">what is closure</h2>
+<p>--<br>
+A closure is the <em>combination</em> of <strong>a function</strong> and the <strong>lexical environment</strong> whithin which that function was declard.<br>
 lexical refer the variables are declared within the lexical scoping.<br>
 closures are function that have access to outer(enclosing)function's variables-scope chain even after the outer function has returned.</p>
 <h2 id="why-would-you-use-it">why would you use it</h2>
+<hr>
 <ul>
 <li>Data privacy/ emulating private methods with closuers. commonly used in the module pattern</li>
 <li>Partial applications or currying</li>
 </ul>
-<h2 id="in-for-loop">##in for loop</h2>
-<p><code>for(var i=0;i&lt;10;i++){ setTimeout(function(){ console.log(i)//10个10 },1000)}</code></p>
-<p>use closure   or   let<br>
-<code>for(var i=0;i&lt;10;i++){ ((j)=&gt;{ setTimeout(function(){ console.log(j)//1-10 },1000)})(i) }</code></p>
+<h2 id="in-for-loop">in for loop</h2>
+<hr>
+<pre><code>for(var i=0;i&lt;10;i++){
+    setTimeout(function(){
+        console.log(i)//10个10
+    },1000)}
+</code></pre>
+<h2 id="use-closure-or-let">use closure   or   let</h2>
+<pre><code>for(var i=0;i&lt;10;i++){
+((j)=&gt;{
+  setTimeout(function(){
+        console.log(j)//1-10
+    },1000)})(i) 
+}
+</code></pre>
 <h2 id="implement-in-debounce-function">implement in debounce function</h2>
 <hr>
-<p><code>window.onresize = function(){ console.log('onresize')// trigger it only once }</code></p>
-<p>without clouser<br>
-<code>window.onresize = function(){ debounce(fn,1000) } var fn = function(){ console.log('fn') } var time = 0 function debounce(fn,timeLong){ if(time){ clearTimeout(time) time = 0 } time =setTimeout(function(){ fn() },timeLong) }</code><br>
-with closure</p>
-<p><code>window.onresize = debounce(fn,500) function debounce(fn){ var timer = null return function(){ if(timer){ //timer第一次执行后会保存在内存里 永远都是执行器 直到最后被触发 clearTimeout(timer) timer = null } timer = setTimeout(function(){ fn() },1000) } } var fn = function(){ console.log('fn') }</code></p>
+<pre><code>window.onresize = function(){
+    console.log('onresize')// trigger it only once 
+}
+</code></pre>
+<h2 id="without-clouser">without clouser</h2>
+<pre><code>window.onresize = function(){
+debounce(fn,1000)
+}
+ var fn = function(){    console.log('fn')
+}
+var time = 0
+function debounce(fn,timeLong){
+        if(time){
+            clearTimeout(time)
+            time = 0
+        }
+        time =setTimeout(function(){
+         fn()
+        },timeLong)
+}
+</code></pre>
+<h2 id="with-closure">with closure</h2>
+<pre><code>window.onresize = debounce(fn,500)
+function debounce(fn){
+        var timer = null
+        return function(){
+        if(timer){     //timer第一次执行后会保存在内存里 永远都是执行器 直到最后被触发
+           clearTimeout(timer)
+            timer = null
+        }
+        timer = setTimeout(function(){
+            fn()
+        },1000)
+        }  
+}
+var fn = function(){
+    console.log('fn')
+}
+</code></pre>
 
           
         <div class="comment">
