@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-       <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta content="yes" name="apple-mobile-web-app-capable" />
   <meta content="black" name="apple-mobile-web-app-status-bar-style" />
@@ -9,14 +9,14 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="kveln">
-  <title>Js | Hongxu Li</title>
+  <title>debounce &amp; throttle | Hongxu Li</title>
   <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="https://hongxuli.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
   <!--  <link href="https://hongxuli.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="Js | Hongxu Li » Feed" href="https://hongxuli.github.io/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="debounce &amp; throttle | Hongxu Li » Feed" href="https://hongxuli.github.io/atom.xml">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
   <link href="https://hongxuli.github.io/styles/main.css" rel="stylesheet">
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
@@ -25,6 +25,11 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
+    <meta property="og:description" content="debounce &amp; throttle"/>
+    <meta property="og:url" content="https://hongxuli.github.io/post/debounce-and-throttle/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Hongxu Li"/>
   </head>
   <body>
   	<!-- Navigation -->
@@ -66,87 +71,99 @@
       </div>
     </div>
   </nav>
-<!-- Page Header -->
+  <!-- Page Header -->
   <header class="masthead" style="background-image: url('https://hongxuli.github.io/media/images/home-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1 class="tag-tl">#Js</h1>
+          	<span class="tags">
+          	 
+        </span>
+            <h1>debounce &amp; throttle</h1>
+            <span class="meta">
+            	Posted on
+              2020-03-17，2 min read
+            </span>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- Post Content -->
+  <article>
     <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-       
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/event-delegation/">
-            <h2 class="post-title">
-              event delegation
-            </h2>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h2 id="debounce">Debounce</h2>
+<p>Debounce is a higher-order function, which return another function.<br>
+The function delays certain time after a function is invoked<br>
+<em>in other word: debounce allow us to 'group' mutiple raised function into a single function</em><br>
+eg. delay the processing of the <code>keyup</code> event until the user has stopped typing for amount of time</p>
+<pre><code>function debounce(fn, delay){
+    var timer 
+    return function(){
+        if(timer){
+            clearTimeout(timer)
+        }
+        // be careful about this in setTimeout 
+        timer = setTimeout(()=&gt;{
+            fn()
+        },delay)
+    }
+}
+
+var returnedFunction = debounce(function() {
+  // All the taxing stuff you do
+}, 250);
+
+window.addEventListener('resize', returnedFunction);
+</code></pre>
+<h2 id="throttle">Throttle</h2>
+<p>Throttling changes the function in such a way that it can be fired at most once in a time interval.<br>
+<em>in other words: By using throttle, we dont allow our function to excute more than once every X (ms/s)</em></p>
+<pre><code>fucntion throttle(fn,interval){
+    var timer
+    return function(){
+        const now = new Date()
+        if (!timer || now-timer &gt; interval){
+             fn()
+             timer = new Date()
+        }else{
+            return 
+        }
+    }
+}
+</code></pre>
+<p>Debounce scenario: (wait x second when user <strong>stop</strong> type/drag)<br>
+就像法师放技能读条，读条没读完按技能就会重新读条</p>
+<ul>
+<li>resize window</li>
+<li>search<br>
+Throttle scenario:   (<strong>every</strong> x second excute once)<br>
+就像fps游戏的射速，一直按着鼠标射击也只会在规定射速能射出子弹<br>
+-search</li>
+<li>measure the scroll positon of the page  (use debounce will cause you can only mesure when user stop scroll, so you wont be able to know if the positon is at the bottom to implement lazy load)</li>
+<li>mousemove （drag, calculate the distance of the mouse moved)</li>
+</ul>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://hongxuli.github.io/post/closure/">
+              <span class="post-title">
+                closure&rarr;
+              </span>
             </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-18</span>
-             <span>,</span>
-             <span class="post-stats">1 min read</span>
-            </p>
-        </div>
-        <hr>
-        <div class="clearfix">
-        </div>
+          </p>
         
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/amd-vs-commonjs/">
-            <h2 class="post-title">
-              Amd vs commonJs
-            </h2>
-            </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-18</span>
-             <span>,</span>
-             <span class="post-stats">1 min read</span>
-            </p>
+        <div class="comment">
+          
         </div>
-        <hr>
-        <div class="clearfix">
-        </div>
-        
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/closure/">
-            <h2 class="post-title">
-              closure
-            </h2>
-            </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-14</span>
-             <span>,</span>
-             <span class="post-stats">2 min read</span>
-            </p>
-        </div>
-        <hr>
-        <div class="clearfix">
-        </div>
-        
-        
-        
       </div>
     </div>
-  </div>
-
-  
+  </article>
  <!-- Footer -->
   <footer>
     <div class="container">
@@ -227,3 +244,4 @@
   })(this));</script>
   </body>
 </html>
+

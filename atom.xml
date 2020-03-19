@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hongxuli.github.io</id>
     <title>Hongxu Li</title>
-    <updated>2020-03-18T21:30:25.159Z</updated>
+    <updated>2020-03-19T01:11:06.060Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hongxuli.github.io"/>
     <link rel="self" href="https://hongxuli.github.io/atom.xml"/>
@@ -38,14 +38,73 @@ we can always use transpilers to convert our code.</p>
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[debounce & throttle]]></title>
+        <id>https://hongxuli.github.io/post/debounce-and-throttle/</id>
+        <link href="https://hongxuli.github.io/post/debounce-and-throttle/">
+        </link>
+        <updated>2020-03-17T21:33:39.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="debounce">Debounce</h2>
+<p>Debounce is a higher-order function, which return another function.<br>
+The function delays certain time after a function is invoked<br>
+<em>in other word: debounce allow us to 'group' mutiple raised function into a single function</em><br>
+eg. delay the processing of the <code>keyup</code> event until the user has stopped typing for amount of time</p>
+<pre><code>function debounce(fn, delay){
+    var timer 
+    return function(){
+        if(timer){
+            clearTimeout(timer)
+        }
+        // be careful about this in setTimeout 
+        timer = setTimeout(()=&gt;{
+            fn()
+        },delay)
+    }
+}
+
+var returnedFunction = debounce(function() {
+  // All the taxing stuff you do
+}, 250);
+
+window.addEventListener('resize', returnedFunction);
+</code></pre>
+<h2 id="throttle">Throttle</h2>
+<p>Throttling changes the function in such a way that it can be fired at most once in a time interval.<br>
+<em>in other words: By using throttle, we dont allow our function to excute more than once every X (ms/s)</em></p>
+<pre><code>fucntion throttle(fn,interval){
+    var timer
+    return function(){
+        const now = new Date()
+        if (!timer || now-timer &gt; interval){
+             fn()
+             timer = new Date()
+        }else{
+            return 
+        }
+    }
+}
+</code></pre>
+<p>Debounce scenario: (wait x second when user <strong>stop</strong> type/drag)<br>
+就像法师放技能读条，读条没读完按技能就会重新读条</p>
+<ul>
+<li>resize window</li>
+<li>search<br>
+Throttle scenario:   (<strong>every</strong> x second excute once)<br>
+就像fps游戏的射速，一直按着鼠标射击也只会在规定射速能射出子弹<br>
+-search</li>
+<li>measure the scroll positon of the page  (use debounce will cause you can only mesure when user stop scroll, so you wont be able to know if the positon is at the bottom to implement lazy load)</li>
+<li>mousemove （drag, calculate the distance of the mouse moved)</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[closure]]></title>
         <id>https://hongxuli.github.io/post/closure/</id>
         <link href="https://hongxuli.github.io/post/closure/">
         </link>
-        <updated>2020-03-15T14:39:08.000Z</updated>
+        <updated>2020-03-15T01:39:08.000Z</updated>
         <content type="html"><![CDATA[<h2 id="what-is-closure">what is closure</h2>
-<p>--<br>
-A closure is the <em>combination</em> of <strong>a function</strong> and the <strong>lexical environment</strong> whithin which that function was declard.<br>
+<hr>
+<p>A closure is the <em>combination</em> of <strong>a function</strong> and the <strong>lexical environment</strong> whithin which that function was declard.<br>
 lexical refer the variables are declared within the lexical scoping.<br>
 closures are function that have access to outer(enclosing)function's variables-scope chain even after the outer function has returned.</p>
 <h2 id="why-would-you-use-it">why would you use it</h2>
@@ -61,7 +120,8 @@ closures are function that have access to outer(enclosing)function's variables-s
         console.log(i)//10个10
     },1000)}
 </code></pre>
-<h2 id="use-closure-or-let">use closure   or   let</h2>
+<h3 id="use-closure-or-let">use closure   or   let</h3>
+<hr>
 <pre><code>for(var i=0;i&lt;10;i++){
 ((j)=&gt;{
   setTimeout(function(){
@@ -75,7 +135,8 @@ closures are function that have access to outer(enclosing)function's variables-s
     console.log('onresize')// trigger it only once 
 }
 </code></pre>
-<h2 id="without-clouser">without clouser</h2>
+<h3 id="without-clouser">without clouser</h3>
+<hr>
 <pre><code>window.onresize = function(){
 debounce(fn,1000)
 }
@@ -92,7 +153,8 @@ function debounce(fn,timeLong){
         },timeLong)
 }
 </code></pre>
-<h2 id="with-closure">with closure</h2>
+<h3 id="with-closure">with closure</h3>
+<hr>
 <pre><code>window.onresize = debounce(fn,500)
 function debounce(fn){
         var timer = null
