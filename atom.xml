@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hongxuli.github.io</id>
     <title>Hongxu Li</title>
-    <updated>2020-03-19T01:11:06.060Z</updated>
+    <updated>2020-03-28T20:23:59.855Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hongxuli.github.io"/>
     <link rel="self" href="https://hongxuli.github.io/atom.xml"/>
@@ -10,6 +10,52 @@
     <logo>https://hongxuli.github.io/images/avatar.png</logo>
     <icon>https://hongxuli.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Hongxu Li</rights>
+    <entry>
+        <title type="html"><![CDATA[HTML form ]]></title>
+        <id>https://hongxuli.github.io/post/html-form/</id>
+        <link href="https://hongxuli.github.io/post/html-form/">
+        </link>
+        <updated>2020-03-26T06:07:25.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="properties">properties:</h3>
+<hr>
+<p>action: target url<br>
+method: GET/POST ....<br>
+input:  type='submit'<br>
+default refresh current page<br>
+autocomplete: on/off   decide if allow autocomplete</p>
+<pre><code>&lt;form action=&quot;form_action.asp&quot; method=&quot;get&quot;&gt;
+  &lt;p&gt;First name: &lt;input type=&quot;text&quot; name=&quot;fname&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Last name: &lt;input type=&quot;text&quot; name=&quot;lname&quot; /&gt;&lt;/p&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+&lt;/form&gt;
+</code></pre>
+<h3 id="several-ways-to-prevent-refresh-or-redirction">several ways to prevent refresh or redirction:</h3>
+<ul>
+<li>do not include action in from</li>
+<li>if you use the input element in form and it's type is submit, then you have to add a submit function which <strong>return false</strong> on form, otherwise the form would refresh</li>
+<li>ues button instead of submit</li>
+<li>put input element ouside of form</li>
+</ul>
+<h3 id="encryption">encryption</h3>
+<pre><code>&lt;form id='test_form' action='' method='' omsubmit='return checkForm()'&gt;
+    &lt;input type='text' name='username' value=''/&gt;
+    &lt;input type='password' name='pwd' value =''/&gt;
+    &lt;button type='submit'&gt;submit&lt;button/&gt;
+&lt;form/&gt;
+
+&lt;script&gt;
+function checkForm(){
+    var form = document.getElementById('test_form');
+    //modifie input
+    var pwd= document.getElementById('pwd');
+    pwd.value= toMD5(pwd.value);  //length of password will change to encryped length                  
+    //next....
+    return ture;
+}
+&lt;script/&gt;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[event delegation]]></title>
         <id>https://hongxuli.github.io/post/event-delegation/</id>

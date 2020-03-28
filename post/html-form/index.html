@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
   <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,14 +9,14 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="kveln">
-  <title>Hongxu Li</title>
+  <title>HTML form  | Hongxu Li</title>
   <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="https://hongxuli.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
   <!--  <link href="https://hongxuli.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="Hongxu Li » Feed" href="https://hongxuli.github.io/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="HTML form  | Hongxu Li » Feed" href="https://hongxuli.github.io/atom.xml">
   <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
   <link href="https://hongxuli.github.io/styles/main.css" rel="stylesheet">
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
@@ -25,9 +25,15 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
+    <meta property="og:description" content="HTML form "/>
+    <meta property="og:url" content="https://hongxuli.github.io/post/html-form/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="Hongxu Li"/>
   </head>
   <body>
-     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="https://hongxuli.github.io">Hongxu Li</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,126 +71,89 @@
       </div>
     </div>
   </nav>
+  <!-- Page Header -->
   <header class="masthead" style="background-image: url('https://hongxuli.github.io/media/images/home-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <!-- <h1>Hongxu Li</h1> -->
-            <span class="subheading">Stay hungry, stay foolish</span>
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+            <a href="https://hongxuli.github.io/tag/Efrr-w388/" class="tag">html</a>
+            
+        </span>
+            <h1>HTML form </h1>
+            <span class="meta">
+            	Posted on
+              2020-03-26，2 min read
+            </span>
           </div>
         </div>
       </div>
     </div>
   </header>
-      <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-       
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/html-form/">
-            <h2 class="post-title">
-              HTML form 
-            </h2>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h3 id="properties">properties:</h3>
+<hr>
+<p>action: target url<br>
+method: GET/POST ....<br>
+input:  type='submit'<br>
+default refresh current page<br>
+autocomplete: on/off   decide if allow autocomplete</p>
+<pre><code>&lt;form action=&quot;form_action.asp&quot; method=&quot;get&quot;&gt;
+  &lt;p&gt;First name: &lt;input type=&quot;text&quot; name=&quot;fname&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;Last name: &lt;input type=&quot;text&quot; name=&quot;lname&quot; /&gt;&lt;/p&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+&lt;/form&gt;
+</code></pre>
+<h3 id="several-ways-to-prevent-refresh-or-redirction">several ways to prevent refresh or redirction:</h3>
+<ul>
+<li>do not include action in from</li>
+<li>if you use the input element in form and it's type is submit, then you have to add a submit function which <strong>return false</strong> on form, otherwise the form would refresh</li>
+<li>ues button instead of submit</li>
+<li>put input element ouside of form</li>
+</ul>
+<h3 id="encryption">encryption</h3>
+<pre><code>&lt;form id='test_form' action='' method='' omsubmit='return checkForm()'&gt;
+    &lt;input type='text' name='username' value=''/&gt;
+    &lt;input type='password' name='pwd' value =''/&gt;
+    &lt;button type='submit'&gt;submit&lt;button/&gt;
+&lt;form/&gt;
+
+&lt;script&gt;
+function checkForm(){
+    var form = document.getElementById('test_form');
+    //modifie input
+    var pwd= document.getElementById('pwd');
+    pwd.value= toMD5(pwd.value);  //length of password will change to encryped length                  
+    //next....
+    return ture;
+}
+&lt;script/&gt;
+</code></pre>
+
+          
+          <p class="next-post">下一篇：
+            <a href="https://hongxuli.github.io/post/event-delegation/">
+              <span class="post-title">
+                event delegation&rarr;
+              </span>
             </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-26</span>
-             <span>,</span>
-             <span class="post-stats">2 min read</span>
-            </p>
-        </div>
-        <hr>
-        <div class="clearfix">
-        </div>
+          </p>
         
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/event-delegation/">
-            <h2 class="post-title">
-              event delegation
-            </h2>
-            </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-18</span>
-             <span>,</span>
-             <span class="post-stats">1 min read</span>
-            </p>
+        <div class="comment">
+          
         </div>
-        <hr>
-        <div class="clearfix">
-        </div>
-        
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/amd-vs-commonjs/">
-            <h2 class="post-title">
-              Amd vs commonJs
-            </h2>
-            </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-18</span>
-             <span>,</span>
-             <span class="post-stats">1 min read</span>
-            </p>
-        </div>
-        <hr>
-        <div class="clearfix">
-        </div>
-        
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/debounce-and-throttle/">
-            <h2 class="post-title">
-              debounce &amp; throttle
-            </h2>
-            </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-17</span>
-             <span>,</span>
-             <span class="post-stats">2 min read</span>
-            </p>
-        </div>
-        <hr>
-        <div class="clearfix">
-        </div>
-        
-        <div class="post-preview">
-          <a href="https://hongxuli.github.io/post/closure/">
-            <h2 class="post-title">
-              closure
-            </h2>
-            </a>
-            <h3 class="post-subtitle">
-              
-            </h3>
-          <p class="post-meta">
-             <span class="time">2020-03-14</span>
-             <span>,</span>
-             <span class="post-stats">2 min read</span>
-            </p>
-        </div>
-        <hr>
-        <div class="clearfix">
-        </div>
-        
-        
-        
       </div>
     </div>
-  </div>
-
-  
-    <!-- Footer -->
+  </article>
+ <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row">
@@ -264,3 +233,4 @@
   })(this));</script>
   </body>
 </html>
+
